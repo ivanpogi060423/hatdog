@@ -73,10 +73,69 @@ export const scenes = {
         ,
         { 
             text: "Go straight to the forest", 
-            nextScene: 'intro' 
+            nextScene: 'unpreparedForest' 
         }
     ]
 },
+
+unpreparedForest: {
+    id: 'unpreparedForest',
+    text: `
+    <p> At the entrance of the forest, you realize that you are not prepared for the journey. You realized that you will be needing 
+    <strong>food and a compass</strong> to navigate through the forest. </p>
+    <p> "Ben, I think we should get ready first before we continue our journey" you said. </p>
+    <p> "Why though ? We already have a map, isn't that enough for us to navigate through this forest ?" Ben curiously replied. </p>
+    <p> "I think we will be needing some <strong>Snacks and a compass</strong> to navigate into this forest", you calmly replied. </p>
+    <p> "Hmmm, you have a point, <strong>what shall we do then ?</strong> Ben asked. </p>
+    `,      
+    backgroundImage: `${process.env.PUBLIC_URL}/images/backgrounds/Fantasy_forest_background.jpg`,
+    characterImages: {
+        protagonist: `${process.env.PUBLIC_URL}/images/characters/protagonist.png`,
+        ben: `${process.env.PUBLIC_URL}/images/characters/ben.png`
+    },
+    soundEffect: 'library_ambience',
+    choices: [
+        {
+            text: "Go back and pack-up some supplies first",
+            nextScene: 'packingSupplies',
+            gameStateUpdate: { hasAdvice: true }
+        },
+        {
+            text: "Rush to forest anyway",
+            nextScene: 'Lost'
+        }
+    ]
+},
+
+
+Lost: {
+    id: 'Lost',
+    text: `
+    <p> You and Ben got lost, because you didn't have a compass and food, the two of you suddenly felt hungry. Because of this the two of you
+    lose hope, one of you suggested to go home and stop the journey.</p>
+
+    <p> "We are lost! I told you we need a <strong> compass and foods to survive</strong> in this journey!" You said. </p>
+    <p> "Now we are lost, I think we should <strong>just go home and stop this journey</strong>" </p>
+    `,      
+    backgroundImage: `${process.env.PUBLIC_URL}/images/backgrounds/Fantasy_forest_background.jpg`,
+    characterImages: {
+        protagonist: `${process.env.PUBLIC_URL}/images/characters/protagonist.png`,
+        ben: `${process.env.PUBLIC_URL}/images/characters/ben.png`
+    },
+    soundEffect: 'library_ambience',
+    choices: [
+        {
+            text: "Go back and pack-up some supplies first, then try to finish the journey",
+            nextScene: 'packingSupplies',
+            gameStateUpdate: { hasAdvice: true }
+        },
+        {
+            text: "Just go home and stop the journey",
+            nextScene: 'Failed'
+        }
+    ]
+},
+
 
 
   // Library Path
@@ -113,7 +172,7 @@ export const scenes = {
           },
           {
               text: "Rush to forest anyway",
-              nextScene: 'forestUnprepared'
+              nextScene: 'unpreparedForest'
           }
       ]
   },
@@ -245,9 +304,15 @@ export const scenes = {
       ]
   },
 
-  endingMagic: {
-      id: 'endingMagic',
-      text: "You discover the true magic of the forest and decide to keep exploring its mysteries!",
+  Failed: {
+      id: 'Failed',
+      text:`
+      <p> You and ben failed to locate the treasure in the forest and the both of you feel frustrated and disappointed. All your effort 
+      results into nothing because you choose to go straight to the forest without preparing anything.
+      <p> May this result teach you something, may this ending give you the lesson that <strong>all the things that is happening in your life is
+      a result of the choices that you made, so you better choose wisely!</strong> </p>
+      <p> Thank You for playing our game! We hope you had fun and got the lesson! See you again little adventurers! </p>
+      `,
       backgroundImage: `${process.env.PUBLIC_URL}/images/backgrounds/forest_background.jpg`,
       characterImages: {
           protagonist: `${process.env.PUBLIC_URL}/images/characters/protagonist.png`,
@@ -256,7 +321,7 @@ export const scenes = {
       choices: [
           {
               text: "Play Again",
-              nextScene: 'story'
+              nextScene: 'intro'
           }
       ]
   }
