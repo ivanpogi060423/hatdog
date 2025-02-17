@@ -23,7 +23,7 @@ const ChoiceTales = () => {
     <div className="relative h-screen w-full overflow-hidden">
       {/* Background Image */}
       <img 
-        src={`${process.env.PUBLIC_URL}/images/backgrounds/Fantasy forest background.png`}
+        src={`${process.env.PUBLIC_URL}/images/backgrounds/Fantasy_forest_background.jpg`}
         alt="Fantasy forest background" 
         className="absolute inset-0 w-full h-full object-cover object-center"
       />

@@ -235,10 +235,62 @@ Lost: {
           },
           {
               text: "Climb the hill",
-              nextScene: 'packingSupplies'
+              nextScene: 'hillclimb'
           }
       ]
   },
+
+  hillclimb: {
+    id: 'hillclimb',
+    text: `
+    <p> "Wow! Look at that! There is a lot of trees that are shaped in funny ways!" you said as you giggles.
+    <p> "And Look! There is the <strong>stream!</strong> that we are following!" Ben excitedly replied. </p>
+    <p> "Look Over there!" you pointed out on something. </p>
+    <p> "What is that ? </p>
+    <p> "Whatever it is, it is very <strong>shiny!</strong> </p>
+    <p> "<strong>Shall we go there?</strong>, or <strong>shall we continue on following what is on the map ?</strong>"
+    `,
+    backgroundImage: `${process.env.PUBLIC_URL}/images/backgrounds/hillclimb.jpg`,
+    characterImages: {
+        protagonist: `${process.env.PUBLIC_URL}/images/characters/protagonist.png`,
+        ben: `${process.env.PUBLIC_URL}/images/characters/ben.png`
+    },
+    choices: [
+        {
+            text: "Continue on following the stream",
+            nextScene: 'forestExploration',
+            requirement: {
+                items: ['compass']
+            }
+        },
+        {
+            text: "Go to the shiny thing!",
+            nextScene: 'endingfairy'
+        }
+    ]
+},
+
+endingfairy: {
+    id: 'endingfairy',
+    text: `
+    <p> As you explore the forest more, the more amaze you get. The only problem that happen is that you get lost. <strong>You lost you objectives on
+    getting the treasure that you are looking for. Greed is one of the main competitors of everyone, it can lead you to something bad, but sometimes
+    it can also lead you to good.</strong> </p>
+
+    <p> It depends on how you will act up on the choices you will make. Choose wisely! Thankyou for playing the game! See you again little adventurer! </p
+    `,
+    backgroundImage: `${process.env.PUBLIC_URL}/images/backgrounds/forest_background.jpg`,
+    characterImages: {
+        protagonist: `${process.env.PUBLIC_URL}/images/characters/protagonist.png`,
+        ben: `${process.env.PUBLIC_URL}/images/characters/ben.png`
+    },
+    choices: [
+        {
+            text: "Play Again",
+            nextScene: 'info'
+        },
+    ]
+},
 
   
   forestExploration: {
@@ -268,7 +320,7 @@ Lost: {
       choices: [
           {
               text: "Follow the path",
-              nextScene: 'endingMagic'
+              nextScene: 'endingfairy'
           },
           {
               text: "Take the chest and return home",
