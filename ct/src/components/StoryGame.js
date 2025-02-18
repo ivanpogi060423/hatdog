@@ -86,9 +86,12 @@ const StoryGame = () => {
         )}
       </div>
 
+
+
       <div className="scene-content">
         <div dangerouslySetInnerHTML={{ __html: currentScene.text }} 
         className="larger-text"/> {/* REPLACED H2 WITH THIS */}
+
         
         {/* Item Collection */}
         {currentScene.items && currentScene.items
