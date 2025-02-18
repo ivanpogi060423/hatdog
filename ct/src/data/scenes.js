@@ -142,9 +142,9 @@ Lost: {
   library: {
       id: 'library',
       text: `
-      <p> "Mr. Librarian! We found a <strong> map with unfamiliar signs and symbols!</strong> you said.<p>
+      <p> "Ms. Librarian! We found a <strong> map with unfamiliar signs and symbols!</strong> you said.<p>
       
-      <p> "Can you help us Examine the map Mr. Libriarian ? " Ben asked </p>
+      <p> "Can you help us Examine the map Ms. Libriarian ? " Ben asked </p>
 
       <p> "Let me take a look at it." the Librarian said </p>
 
@@ -156,12 +156,19 @@ Lost: {
 
       <p> "Here, I already translated it for you, Goodluck on your journey and be careful!" The Librarian said. </p>
 
-      <p> "Thank You Mr. Librarian!" You and Ben happily replied. </p>
+      <p> "Thank You Ms. Librarian!" You and Ben happily replied. </p>
       `,      
       backgroundImage: `${process.env.PUBLIC_URL}/images/backgrounds/library_background.jpg`,
       characterImages: {
           protagonist: `${process.env.PUBLIC_URL}/images/characters/protagonist.png`,
-          ben: `${process.env.PUBLIC_URL}/images/characters/ben.png`
+          ben: `${process.env.PUBLIC_URL}/images/characters/ben.png`,
+          librarian: `${process.env.PUBLIC_URL}/images/characters/librarian.png`
+      },
+      activeCharacters: ['protagonist', 'ben', 'librarian'],
+      characterPositions: {
+          protagonist: { left: '20%', bottom: '10%' },
+          ben: { left: '50%', bottom: '10%' },
+          librarian: { right: '20%', bottom: '10%' }
       },
       soundEffect: 'library_ambience',
       choices: [
