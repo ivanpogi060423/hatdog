@@ -36,7 +36,6 @@ export const scenes = {
       backgroundImage: `${process.env.PUBLIC_URL}/images/backgrounds/attic_background.jpg`,
       characters: ['protagonist', 'ben'],
       items: ['old_map'],
-      soundEffect: 'paper_rustle',
       characterImages: {
           protagonist: `${process.env.PUBLIC_URL}/images/characters/protagonist.png`,
           ben: `${process.env.PUBLIC_URL}/images/characters/ben.png`
@@ -88,12 +87,11 @@ unpreparedForest: {
     <p> "I think we will be needing some <strong>Snacks and a compass</strong> to navigate into this forest", you calmly replied. </p>
     <p> "Hmmm, you have a point, <strong>what shall we do then ?</strong> Ben asked. </p>
     `,      
-    backgroundImage: `${process.env.PUBLIC_URL}/images/backgrounds/Fantasy_forest_background.jpg`,
+    backgroundImage: `${process.env.PUBLIC_URL}/images/backgrounds/Forest_lost.jpg`, // Keep the original capitalization
     characterImages: {
         protagonist: `${process.env.PUBLIC_URL}/images/characters/protagonist.png`,
         ben: `${process.env.PUBLIC_URL}/images/characters/ben.png`
     },
-    soundEffect: 'library_ambience',
     choices: [
         {
             text: "Go back and pack-up some supplies first",
@@ -117,12 +115,11 @@ Lost: {
     <p> "We are lost! I told you we need a <strong> compass and foods to survive</strong> in this journey!" You said. </p>
     <p> "Now we are lost, I think we should <strong>just go home and stop this journey</strong>" </p>
     `,      
-    backgroundImage: `${process.env.PUBLIC_URL}/images/backgrounds/Fantasy_forest_background.jpg`,
+    backgroundImage: `${process.env.PUBLIC_URL}/images/backgrounds/Forest_lost.jpg`, // Keep the original capitalization
     characterImages: {
         protagonist: `${process.env.PUBLIC_URL}/images/characters/protagonist.png`,
         ben: `${process.env.PUBLIC_URL}/images/characters/ben.png`
     },
-    soundEffect: 'library_ambience',
     choices: [
         {
             text: "Go back and pack-up some supplies first, then try to finish the journey",
@@ -170,7 +167,6 @@ Lost: {
           ben: { left: '50%', bottom: '10%' },
           librarian: { right: '20%', bottom: '10%' }
       },
-      soundEffect: 'library_ambience',
       choices: [
           {
               text: "Pack supplies first",
@@ -204,7 +200,6 @@ Lost: {
     },
     items: ['compass','sandwich'],
     collectibles: ['sandwich'],
-    soundEffect: 'magical_glow',
     choices: [
         {
             text: "Head to forest",
