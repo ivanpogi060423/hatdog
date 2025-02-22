@@ -1,7 +1,10 @@
 import React, { useState } from 'react';
+import { useNavigate } from 'react-router-dom';
 import { useGameLogic } from '../hooks/useGameLogic';
+import './StoryGame.css';
 
 const StoryGame = () => {
+  const navigate = useNavigate();
   const {
     currentScene, 
     inventory, 
@@ -12,11 +15,10 @@ const StoryGame = () => {
 
   const [isInventoryOpen, setIsInventoryOpen] = useState(false);
   const [selectedItem, setSelectedItem] = useState(null);
-
-  console.log("Current Scene:", currentScene); // Debugging log
+  const [isPaused, setIsPaused] = useState(false);
+  const [showSettings, setShowSettings] = useState(false);
 
   const handleSceneTransition = (choice) => {
-    console.log("Choice made:", choice); // Debugging log
     if (choice.requirement && !checkRequirements(choice.requirement)) {
       alert("You're not prepared for this adventure!");
       return;
@@ -25,30 +27,34 @@ const StoryGame = () => {
   };
 
   const checkRequirements = (requirement) => {
-    // Implement requirement checking logic
-    if (requirement === 'supplies') {
-      return inventory.includes('compass'); // Example requirement check
+    if (requirement.items) {
+      return requirement.items.every(item => inventory.includes(item));
     }
     return true;
   };
 
   const handleCollectItem = (itemId) => {
     collectItem(itemId);
-    // Remove the item from the current scene's items
-    currentScene.items = currentScene.items.filter(item => item !== itemId);
+    if (currentScene.items) {
+      currentScene.items = currentScene.items.filter(item => item !== itemId);
+    }
   };
 
   const getItemName = (itemId) => {
-    if (itemId === 'old_map') {
-      return 'Old Treasure Map';
-    }
-    if (itemId === 'compass') {
-      return 'Compass';
-    }
-    if (itemId === 'sandwich'){
-      return 'Sandwich';
-    }
-    return itemId;
+    const itemNames = {
+      'old_map': 'Old Treasure Map',
+      'compass': 'Compass',
+      'sandwich': 'Sandwich'
+    };
+    return itemNames[itemId] || itemId;
+  };
+
+  const handleMainMenu = () => {
+    localStorage.setItem('gameProgress', JSON.stringify({
+      currentScene: currentScene.id,
+      inventory: inventory
+    }));
+    navigate('/');
   };
 
   return (
@@ -60,7 +66,32 @@ const StoryGame = () => {
         backgroundPosition: 'center'
       }}
     >
-      {/* Inventory Section in Upper Left */}
+      {/* Pause Button */}
+      <button 
+        className="pause-button"
+        onClick={() => setIsPaused(true)}
+      >
+        <img 
+          src={`${process.env.PUBLIC_URL}/images/UI/pause.png`}
+          alt="Pause"
+        />
+      </button>
+
+      {/* Pause Menu */}
+      {isPaused && (
+        <div className="pause-overlay">
+          <div className="pause-menu">
+            <h2>Game Paused</h2>
+            <div className="pause-buttons">
+              <button onClick={() => setIsPaused(false)}>Resume</button>
+              <button onClick={() => setShowSettings(true)}>Settings</button>
+              <button onClick={handleMainMenu}>Main Menu</button>
+            </div>
+          </div>
+        </div>
+      )}
+
+      {/* Inventory Section */}
       <div className="inventory-section" style={{ position: 'absolute', top: 10, left: 10, backgroundColor: 'rgba(255, 255, 255, 0.8)', padding: '10px', borderRadius: '5px' }}>
         <button onClick={() => setIsInventoryOpen(!isInventoryOpen)}>
           {isInventoryOpen ? 'Close Inventory' : 'Open Inventory'}
@@ -86,16 +117,40 @@ const StoryGame = () => {
         )}
       </div>
 
-
-
+      {/* Scene Content */}
       <div className="scene-content">
-        <div dangerouslySetInnerHTML={{ __html: currentScene.text }} 
-        className="larger-text"/> {/* REPLACED H2 WITH THIS */}
+        <div 
+          dangerouslySetInnerHTML={{ __html: currentScene.text }} 
+          className="larger-text"
+        />
 
-        
-        {/* Item Collection */}
+        {/* Character Images */}
+        {currentScene.characterImages && Object.entries(currentScene.characterImages).map(([character, image]) => {
+          const position = currentScene.characterPositions?.[character] || {};
+          return (
+            <div
+              key={character}
+              style={{
+                position: 'absolute',
+                ...position,
+                zIndex: 2
+              }}
+            >
+              <img
+                src={image}
+                alt={character}
+                style={{
+                  height: '300px',
+                  width: 'auto'
+                }}
+              />
+            </div>
+          );
+        })}
+
+        {/* Collectible Items */}
         {currentScene.items && currentScene.items
-          .filter(itemId => !inventory.includes(itemId)) // Only show items not in inventory
+          .filter(itemId => !inventory.includes(itemId))
           .map(itemId => (
             <div 
               key={itemId} 
@@ -117,6 +172,7 @@ const StoryGame = () => {
             <button 
               key={choice.text}
               onClick={() => handleSceneTransition(choice)}
+              className="choice-button"
             >
               {choice.text}
             </button>
