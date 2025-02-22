@@ -1,7 +1,7 @@
 import React, { useState } from 'react';
 import { useNavigate } from 'react-router-dom';
 import { Volume2 } from 'lucide-react';
-import './ChoiceTales.css';
+import '../styles/ChoiceTales.css';
 
 const ChoiceTales = () => {
   const navigate = useNavigate();
