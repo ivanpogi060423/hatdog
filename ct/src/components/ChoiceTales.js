@@ -165,8 +165,7 @@ const ChoiceTales = () => {
               <ul>
                 <li>Multiple storylines and endings</li>
                 <li>Rich, immersive narratives</li>
-                <li>Beautiful artwork and animations</li>
-                <li>Engaging sound effects and music</li>
+                <li>Beautiful artwork and sceneries</li>
                 <li>Family-friendly content</li>
               </ul>
               
