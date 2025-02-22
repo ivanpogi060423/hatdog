@@ -229,7 +229,7 @@ Lost: {
         backgroundImage: `${process.env.PUBLIC_URL}/images/backgrounds/forest_background.jpg`,
         characterImages: {
             protagonist: `${process.env.PUBLIC_URL}/images/characters/protagonist.png`,
-            ben: `${process.env.PUBLIC_URL}/images/characters/ben.png`,
+            ben: `${process.env.PUBLIC_URL}/images/characters/ben2.png`,
             felix: `${process.env.PUBLIC_URL}/images/characters/felix.png`
         },
         characterPositions: {
@@ -265,7 +265,7 @@ Lost: {
     backgroundImage: `${process.env.PUBLIC_URL}/images/backgrounds/hillclimb.jpg`,
     characterImages: {
         protagonist: `${process.env.PUBLIC_URL}/images/characters/protagonist.png`,
-        ben: `${process.env.PUBLIC_URL}/images/characters/ben.png`
+        ben: `${process.env.PUBLIC_URL}/images/characters/ben2.png`
     },
     choices: [
         {
@@ -294,7 +294,7 @@ endingfairy: {
     backgroundImage: `${process.env.PUBLIC_URL}/images/backgrounds/forest_background.jpg`,
     characterImages: {
         protagonist: `${process.env.PUBLIC_URL}/images/characters/protagonist.png`,
-        ben: `${process.env.PUBLIC_URL}/images/characters/ben.png`
+        ben: `${process.env.PUBLIC_URL}/images/characters/ben2.png`
     },
     choices: [
         {
@@ -329,7 +329,7 @@ endingfairy: {
         backgroundImage: `${process.env.PUBLIC_URL}/images/backgrounds/forest_background.jpg`,
         characterImages: {
             protagonist: `${process.env.PUBLIC_URL}/images/characters/protagonist.png`,
-            ben: `${process.env.PUBLIC_URL}/images/characters/ben.png`,
+            ben: `${process.env.PUBLIC_URL}/images/characters/ben2.png`,
             felix: `${process.env.PUBLIC_URL}/images/characters/felix.png`
         },
         characterPositions: {
@@ -366,7 +366,7 @@ endingfairy: {
       backgroundImage: `${process.env.PUBLIC_URL}/images/backgrounds/treasure_background.jpg`,
       characterImages: {
           protagonist: `${process.env.PUBLIC_URL}/images/characters/protagonist.png`,
-          ben: `${process.env.PUBLIC_URL}/images/characters/ben.png`
+          ben: `${process.env.PUBLIC_URL}/images/characters/ben2.png`
       },
       choices: [
           {
@@ -388,7 +388,7 @@ endingfairy: {
       backgroundImage: `${process.env.PUBLIC_URL}/images/backgrounds/forest_background.jpg`,
       characterImages: {
           protagonist: `${process.env.PUBLIC_URL}/images/characters/protagonist.png`,
-          ben: `${process.env.PUBLIC_URL}/images/characters/ben.png`
+          ben: `${process.env.PUBLIC_URL}/images/characters/ben2.png`
       },
       choices: [
           {
