@@ -125,23 +125,41 @@ const StoryGame = () => {
         />
 
         {/* Character Images */}
-        {currentScene.characterImages && Object.entries(currentScene.characterImages).map(([character, image]) => {
-          const position = currentScene.characterPositions?.[character] || {};
+        {currentScene.characterImages && Object.entries(currentScene.characterImages).map(([character, image], index, array) => {
+          // Calculate position based on number of characters
+          let position = {};
+          if (array.length === 1) {
+            // Single character - center
+            position = { left: '50%', transform: 'translateX(-50%)' };
+          } else if (array.length === 2) {
+            // Two characters - left and right
+            position = index === 0 ? { left: '10%' } : { right: '10%' };
+          } else {
+            // More than two characters - distribute evenly
+            const isLeft = index < array.length / 2;
+            position = isLeft 
+              ? { left: `${2 + (index * 15)}%` }
+              : { right: `${5 + ((array.length - 1 - index) * 15)}%` };
+          }
+
           return (
             <div
               key={character}
               style={{
                 position: 'absolute',
+                bottom: '0%', // Add bottom positioning
+                zIndex: 2,
                 ...position,
-                zIndex: 2
+                transition: 'all 0.3s ease' // Smooth transition for position changes
               }}
             >
               <img
                 src={image}
                 alt={character}
                 style={{
-                  height: '300px',
-                  width: 'auto'
+                  height: '600px', // Fixed height for consistency
+                  width: 'auto',
+                  objectFit: 'contain'
                 }}
               />
             </div>
