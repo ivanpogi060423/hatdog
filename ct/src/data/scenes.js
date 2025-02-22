@@ -216,36 +216,46 @@ Lost: {
     ]
 },
 
-  forestEntrance: {
-      id: 'forestEntrance',
-      text: `
-      <p> As you and Ben explore the forest, Ben noticed something funny. </p>
+    forestEntrance: {
+        id: 'forestEntrance',
+        text: `
+        <p> As you and Ben explore the forest, Ben noticed something funny. </p>
 
-      <p> "Look at that <Strong>funny-shaped tree!</strong>" Ben points to one with branches that curl like swirls of ice cream. You both giggle and keep walking. </p>
+        <p> "Look at that <Strong>funny-shaped tree!</strong>" Ben points to one with branches that curl like swirls of ice cream. You both giggle and keep walking. </p>
 
-      <p> You suddenly saw a <strong>stream</strong>, "Hey Ben! look at that Stream! <strong>Should we follow it ?</strong>, you asked " </p>
+        <p> Suddenly, a friendly forest ranger named Felix appeared. "Hello there young adventurers! I'm Felix, the guardian of this forest." </p>
 
-      <p> "Wow it is so beautiful, and look there is <strong>a hill with a big tree on top of it! Should we climb it and get a better view?</strong>" Ben replied. </p>
-      `,
-      backgroundImage: `${process.env.PUBLIC_URL}/images/backgrounds/forest_background.jpg`,
-      characterImages: {
-          protagonist: `${process.env.PUBLIC_URL}/images/characters/protagonist.png`,
-          ben: `${process.env.PUBLIC_URL}/images/characters/ben.png`
-      },
-      choices: [
-          {
-              text: "Follow The Stream",
-              nextScene: 'forestExploration',
-              requirement: {
-                  items: ['compass']
-              }
-          },
-          {
-              text: "Climb the hill",
-              nextScene: 'hillclimb'
-          }
-      ]
-  },
+        <p> You suddenly saw a <strong>stream</strong>, "Hey Ben! look at that Stream! <strong>Should we follow it?</strong>" you asked. </p>
+
+        <p> Felix smiled and said, "The stream is a good guide, but there's also <strong>a hill with a big tree on top of it! You might get a better view from there.</strong>" </p>
+        
+        <p> "What do you think we should do?" Ben asked excitedly. </p>
+        `,
+        backgroundImage: `${process.env.PUBLIC_URL}/images/backgrounds/forest_background.jpg`,
+        characterImages: {
+            protagonist: `${process.env.PUBLIC_URL}/images/characters/protagonist.png`,
+            ben: `${process.env.PUBLIC_URL}/images/characters/ben.png`,
+            felix: `${process.env.PUBLIC_URL}/images/characters/felix.png`
+        },
+        characterPositions: {
+            protagonist: { left: '20%', bottom: '10%' },
+            ben: { left: '50%', bottom: '10%' },
+            felix: { right: '20%', bottom: '10%' }
+        },
+        choices: [
+            {
+                text: "Follow The Stream",
+                nextScene: 'forestExploration',
+                requirement: {
+                    items: ['compass']
+                }
+            },
+            {
+                text: "Climb the hill",
+                nextScene: 'hillclimb'
+            }
+        ]
+    },
 
   hillclimb: {
     id: 'hillclimb',
@@ -300,41 +310,49 @@ endingfairy: {
 },
 
   
-  forestExploration: {
-      id: 'forestExploration',
-      text:`
-      <p> As the two of you followed the stream, Ben suddenly saw something shiny . </p>
+    forestExploration: {
+        id: 'forestExploration',
+        text:`
+        <p> As the three of you followed the stream, Ben suddenly saw something shiny. </p>
 
-      <p> "Hey! Look at that <strong> shiny thing </strong> !" Ben points to a small, glinting object half-burried on the ground. </p>
+        <p> "Hey! Look at that <strong>shiny thing</strong>!" Ben points to a small, glinting object half-buried on the ground. </p>
 
-      <p> The two of you approaches it with care </p>
+        <p> Felix examined it carefully, "This looks like an ancient treasure! But be careful, not all that glitters is gold." </p>
 
-      <p> "Ben, I think this is it! We Found the <strong>Treasure</strong>! " you exclaimed. </p>
+        <p> "Ben, I think this is it! We Found the <strong>Treasure</strong>!" you exclaimed. </p>
 
-      <p> "You're right! We did it! We found the treasure!" Ben replied. </p>
+        <p> "You're right! We did it!" Ben replied while Felix watched with an intrigued smile. </p>
 
-      <p> The both of you hugged each other in excitement. Then you noticed something. </p>
+        <p> The both of you hugged each other in excitement. Then you noticed something else. </p>
 
-      <p> "Look there is a <strong> path with a bright lights and a music that's like it is calling us!</strong>" you said to Ben. </p>
+        <p> "Look there is a <strong>path with bright lights and music that seems to be calling us!</strong>" you said. </p>
 
-      <p> "You're right, what should we do ? <strong>Shall we take this treasure and go home, or shall we follow that path ?</strong>" Ben asked. </p>
-      `,
-      backgroundImage: `${process.env.PUBLIC_URL}/images/backgrounds/forest_background.jpg`,
-      characterImages: {
-          protagonist: `${process.env.PUBLIC_URL}/images/characters/protagonist.png`,
-          ben: `${process.env.PUBLIC_URL}/images/characters/ben.png`
-      },
-      choices: [
-          {
-              text: "Follow the path",
-              nextScene: 'endingfairy'
-          },
-          {
-              text: "Take the chest and return home",
-              nextScene: 'endingTreasure'
-          }
-      ]
-  },
+        <p> Felix looked concerned, "That path... it's known to lead to mysterious places. What will you choose?" </p>
+
+        <p> "You're right, what should we do? <strong>Shall we take this treasure and go home, or shall we follow that path?</strong>" Ben asked. </p>
+        `,
+        backgroundImage: `${process.env.PUBLIC_URL}/images/backgrounds/forest_background.jpg`,
+        characterImages: {
+            protagonist: `${process.env.PUBLIC_URL}/images/characters/protagonist.png`,
+            ben: `${process.env.PUBLIC_URL}/images/characters/ben.png`,
+            felix: `${process.env.PUBLIC_URL}/images/characters/felix.png`
+        },
+        characterPositions: {
+            protagonist: { left: '20%', bottom: '10%' },
+            ben: { left: '50%', bottom: '10%' },
+            felix: { right: '20%', bottom: '10%' }
+        },
+        choices: [
+            {
+                text: "Follow the mysterious path",
+                nextScene: 'endingfairy'
+            },
+            {
+                text: "Take the chest and return home",
+                nextScene: 'endingTreasure'
+            }
+        ]
+    },
 
   endingTreasure: {
       id: 'endingTreasure',
